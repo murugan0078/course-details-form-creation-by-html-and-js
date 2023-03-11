@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Details</title>
+    <script src="function.js"></script>
+    <style>
+
+    </style>
+</head>
+<body>
+    <form>
+       <div>
+        <label >Course Details</label>
+        </div><br> 
+        <br>
+        <div>
+            <select id="course">
+                <option >...Select...</option>
+                <option value="20000">JAVA</option>
+                <option value="30000">MERN</option>
+                <option value="15000">PHYTHON</option>
+            </select>
+        </div>
+        <div class="add value">
+          <label id="fees-field" aria-readonly="fees" >- - - -</label>
+        </div>
+        <div id="cast-list">
+            <input  type="radio" name="r1" value="2000">
+            <label id="cast-name">SC</label><br>
+            <input  type="radio" name="r1" value="4000">
+            <label id="cast-name">BC</label><br>
+            <input  type="radio" name="r1" value="5000">
+            <label id="cast-name">OC</label>
+
+        </div>
+        <div id="dicount">
+            <label id="discount">- - - -</label>
+        </div>
+        <div id="paid-amount">
+            <input type="text" placeholder="Enter The Amount">
+        </div>
+        <div id="balance-amount">
+            <label id="balance">- - - -</label>
+        </div>
+        <div>
+            <button id="de">Calculate</button>
+        </div>
+    </form>
+    <script>
+        let courseDetails=document.querySelector('#course');
+        let feesSet=document.querySelector('#fees-field');
+        let castDetails=document.querySelector('#cast-list');
+        let castDiscount=document.querySelector('#discount');
+        let paid=document.querySelector('#paid-amount');
+        let balance=document.querySelector('#balance-amount');
+        let cl=document.querySelector('#de')
+        let bd;
+
+        courseDetails.addEventListener('change',()=>{
+            let set=courseDetails.value;
+            feesSet.innerText=set
+        })
+
+        castDetails.addEventListener('change',({target})=>{
+            let add=castDetails.value;
+            castDiscount.innerText=target.defaultValue;
+        })
+        paid.addEventListener('input',({target})=>{
+            let entry=target.value;
+            bd=Number(castDiscount.innerText)+Number(entry)
+        })
+        cl.addEventListener('click',(a)=>{
+            a.preventDefault()
+            balance.innerText=Number(courseDetails.value)-bd
+
+        })
+
+    </script>
+    
+</body>
+</html>
